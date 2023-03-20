@@ -1,8 +1,14 @@
 import React from 'react';
 import './App.css';
 import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 function App() {
+
+    const addExpenseHandler = (expense:any) => {
+      console.log('In App.tsx');
+      console.log(expense);
+    };
 
     const expenses = [
         {
@@ -28,6 +34,7 @@ function App() {
 
     return (
         <div className="expenses">
+            <NewExpense onAddExpense={addExpenseHandler}/>
             <Expenses expenses={expenses}/>
         </div>
     );
