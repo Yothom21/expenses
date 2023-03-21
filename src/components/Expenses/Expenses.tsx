@@ -1,7 +1,11 @@
-import ExpenseItem from "./ExpenseItem";
 import React, {useState} from "react";
 import './Expenses.css';
 import ExpensesFilter from "./ExpensesFilter";
+import ExpensesList from "./ExpensesList";
+
+
+
+
 
 interface ExpensesProps {
     expenses: {
@@ -22,12 +26,13 @@ const Expenses: React.FC<ExpensesProps> = (props:ExpensesProps) => {
         setFilterDate(new Date(filteredDate));
     };
 
+    const filteredExpenses = props.expenses.filter((expense)=> { return expense.date.getFullYear()==filterDate.getFullYear()});
+
+
     return (
         <div>
             <ExpensesFilter onExpensesFilter={saveExpenseFilterHandler}/>
-            {props.expenses.filter((expense)=> (expense.date.getFullYear()==filterDate.getFullYear())).map((expense) =>  (
-                <ExpenseItem title={expense.title} amount={expense.amount} date={expense.date}/>
-            ))}
+            <ExpensesList filteredExpenses={filteredExpenses}/>
         </div>
     );
 }

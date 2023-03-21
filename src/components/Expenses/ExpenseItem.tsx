@@ -18,6 +18,7 @@ const ExpenseItem: React.FC<ExpenseItem> = (props: ExpenseItem) => {
     };
 
     return (
+        <li>
         <Card className="expense-item">
             <ExpenseDate date={props.date}/>
             <div className="expense-item__description">
@@ -26,6 +27,7 @@ const ExpenseItem: React.FC<ExpenseItem> = (props: ExpenseItem) => {
             </div>
             <button onClick={clickHandler}>Change Title</button>
         </Card>
+        </li>
     );
 }
 

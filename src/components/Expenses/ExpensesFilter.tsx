@@ -9,7 +9,7 @@ interface ExpenseFilterProps {
 
 const ExpensesFilter: React.FC<ExpenseFilterProps> = (props:ExpenseFilterProps) => {
 
-    const[selectedDate, setSelectedDate] = useState('');
+    const[selectedDate, setSelectedDate] = useState('2021');
 
     useEffect(() => {
         props.onExpensesFilter(selectedDate)
@@ -24,7 +24,7 @@ const ExpensesFilter: React.FC<ExpenseFilterProps> = (props:ExpenseFilterProps) 
         <div className='expenses-filter'>
             <div className='expenses-filter__control'>
                 <label>Filter by year</label>
-                <select onChange={selectedDateHandler}>
+                <select value={selectedDate} onChange={selectedDateHandler}>
                     <option value='2022'>2022</option>
                     <option value='2021'>2021</option>
                     <option value='2020'>2020</option>
