@@ -13,6 +13,8 @@ const ExpenseForm:React.FC<NewExpenseProps> = (props:NewExpenseProps) => {
 
     const [enteredDate, setEnteredDate] = useState('');
 
+    const[addNewExpenseClicked, setAddNewExpenseClicked] = useState(false);
+
     const titleChangeHandler = (event:any) => {
         setEnteredTitle(event.target.value);
     };
@@ -39,6 +41,18 @@ const ExpenseForm:React.FC<NewExpenseProps> = (props:NewExpenseProps) => {
         setEnteredDate('');
     };
 
+    const addnewExpenseHandler = () => {
+        setAddNewExpenseClicked(prevState => !prevState);
+        console.log(addNewExpenseClicked);
+    };
+    if(!addNewExpenseClicked) {
+        return(
+            <div className="new-expense__actions">
+                <button type='submit' onClick={addnewExpenseHandler}>Add New Expense</button>
+            </div>
+        );
+    }
+
     return (
       <form onSubmit={submitHandler}>
           <div className="new-expense__controls">
@@ -55,9 +69,8 @@ const ExpenseForm:React.FC<NewExpenseProps> = (props:NewExpenseProps) => {
                   <input type='date' value={enteredDate} min="2021-01-01" max="2022-12-31" onChange={dateChangeHandler}/>
               </div>
           </div>
-          <div className="new-expense__actions">
-              <button type='submit'>Add Expense</button>
-          </div>
+          <button type='submit' onClick={addnewExpenseHandler}>Cancel</button>
+          <button type='submit'>Add Expense</button>
       </form>
     );
 }

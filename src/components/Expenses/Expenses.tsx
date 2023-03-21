@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import './Expenses.css';
 import ExpensesFilter from "./ExpensesFilter";
 import ExpensesList from "./ExpensesList";
-
+import ExpensesChart from "./ExpensesChart";
 
 
 
@@ -27,11 +27,10 @@ const Expenses: React.FC<ExpensesProps> = (props:ExpensesProps) => {
     };
 
     const filteredExpenses = props.expenses.filter((expense)=> { return expense.date.getFullYear()==filterDate.getFullYear()});
-
-
     return (
         <div>
             <ExpensesFilter onExpensesFilter={saveExpenseFilterHandler}/>
+            <ExpensesChart expenses={filteredExpenses}/>
             <ExpensesList filteredExpenses={filteredExpenses}/>
         </div>
     );
